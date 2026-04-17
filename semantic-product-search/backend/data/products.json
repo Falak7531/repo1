@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "description": "Noise cancelling over-ear headphones."
+  },
+  {
+    "id": 2,
+    "name": "Smart Watch",
+    "description": "Fitness tracker with heart rate monitor."
+  }
+]

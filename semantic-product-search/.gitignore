@@ -1,0 +1,18 @@
+node_modules/
+__pycache__/
+*.pyc
+venv/
+env/
+.env
+
+# Cache and OS files
+.DS_Store
+.pytest_cache/
+
+# IDE files
+.vscode/
+.idea/
+
+# Vector database files
+db/faiss_index.bin
+*.index

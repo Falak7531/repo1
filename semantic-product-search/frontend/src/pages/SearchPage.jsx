@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SearchHero from '../components/search/SearchHero';
+import ResultCard from '../components/search/ResultCard';
 import { performSearch } from '../services/searchPipeline';
 
 export default function SearchPage() {
@@ -35,28 +36,8 @@ export default function SearchPage() {
         {loading ? (
           <p style={{ color: 'var(--color-text-2)', fontSize: 'var(--text-md)' }}>Searching latent space...</p>
         ) : (
-          results.map(res => (
-            <div key={res.id} style={{ 
-              borderLeft: res.score >= 0.90 ? '2px solid var(--color-primary)' : 'none',
-              padding: 'var(--space-12)',
-              marginBottom: 'var(--space-16)',
-              backgroundColor: 'var(--color-surface)',
-              borderRadius: 'var(--radius-md)',
-              boxShadow: '0 1px 3px var(--color-border)'
-            }}>
-              <h3 style={{ fontSize: 'var(--text-base)', fontWeight: 'var(--font-weight-heading)', margin: '0 0 var(--space-4) 0' }}>
-                {res.title}
-                <span style={{ 
-                  marginLeft: 'var(--space-8)', 
-                  backgroundColor: res.score >= 0.90 ? 'var(--color-primary-light)' : '#f0f0f0',
-                  color: res.score >= 0.90 ? 'var(--color-primary-dark)' : 'var(--color-text-2)',
-                  padding: '2px 6px', borderRadius: '10px', fontSize: 'var(--text-xs)' 
-                }}>
-                  {(res.score * 100).toFixed(1)}%
-                </span>
-              </h3>
-              <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-2)', margin: 0 }}>{res.snippet}</p>
-            </div>
+          results.map((res, index) => (
+            <ResultCard key={res.id} result={res} isTopResult={index === 0 && res.score >= 0.90} />
           ))
         )}
       </div>
